@@ -29,9 +29,24 @@ rm testfilever2
 
 
 3) Log on to ec2 as ubuntu and execute the find command to search for regular files in the /etc directory structure that were accessed more than 10 days ago, are not bigger than 5MB in size, and are owned by the user root.
+Solution:
+sudo find /etc -type f -size -5M -user root -mtime +10
+
 
 4) Log on to ec2 as ubuntu and create file file11 and directory dir11 in the user’s home directory. Make a note of the
 permissions on them. Run the umask command to determine the current umask. Change the umask value to 0035 using the symbolic notation and then create file22 and directory dir22 in the user’s home directory. Observe the permissions on file22 and dir22 and compare them with the permissions on file11 and dir11. Using the chmod command, modify the permissions on file11 to match that on file22. Using the chmod command, modify the permissions on dir22 to match that on dir11. Do not remove file11, file22, dir11, and dir22 yet.
+Solution:
+touch file11
+mkdir dir11
+ls -l
+umask     --default umask result is 0002
+umask u=rwx,g=r,o=w   --now we changed it to 0035
+file22
+dir22
+chmod 642 file11
+chmod 775 dir22
+ls -l
+
  
 5) Log on to ec2 as ubunut and create directory /shared_dir1. Create a group called shared_grp and assign user1000 and user2000 to it (create these users if they do not already exist). Set up appropriate ownership, group membership, and permissions on the directory to support group collaboration.
 
